@@ -224,15 +224,15 @@ public class DoublyLinkedList<E> {
     return sb.toString();
   }
 
-  public static DoublyLinkedList<String> concatenate (DoublyLinkedList<String> NFirst, DoublyLinkedList<String> NSecond)
-  {
-      while(!NSecond.isEmpty())
-      {
-          NFirst.addLast(NSecond.first());
-          NSecond.removeFirst();
-      }
-      return NFirst;
-  }
+    public static DoublyLinkedList<String> concatenate(DoublyLinkedList<String> NFirst, DoublyLinkedList<String> NSecond) {
+        for (Node<String> node = NSecond.header.getNext(); node != NSecond.trailer; node = node.getNext()) {
+            NFirst.addLast(node.getElement());
+        }
+        NSecond.header.setNext(NSecond.trailer);
+        NSecond.trailer.setPrev(NSecond.header);
+        NSecond.size = 0;
+        return NFirst;
+    }
 
 //main method
 //  public static void main(String[] args)
