@@ -13,7 +13,7 @@ public class Driver3 {
         System.out.println("\nTesting unique2 (O(n log n))...");
         int maxN2 = findMaxN(false);
         System.out.println("Maximum n for unique2: " + maxN2);
-        
+
         System.out.println("unique1 max n: " + maxN1);
         System.out.println("unique2 max n: " + maxN2);
     }
