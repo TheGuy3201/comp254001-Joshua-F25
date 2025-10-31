@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package exercise2;
+package exercise3;
 
 /**
  * A basic singly linked list implementation.
@@ -39,7 +39,7 @@ public class SinglyLinkedList<E> implements Cloneable {
   private static class Node<E> {
 
     /** The element stored at this node */
-    private final E element;            // reference to the element stored at this node
+    private E element;            // reference to the element stored at this node
 
     /** A reference to the subsequent node in the list */
     private Node<E> next;         // reference to the subsequent node in the list
@@ -74,7 +74,6 @@ public class SinglyLinkedList<E> implements Cloneable {
      * @param n    the node that should follow this one
      */
     public void setNext(Node<E> n) { next = n; }
-    
   } //----------- end of nested Node class -----------
 
   // instance variables of the SinglyLinkedList
@@ -204,65 +203,6 @@ public class SinglyLinkedList<E> implements Cloneable {
     return h;
   }
 
-  public SinglyLinkedList<E> concatenate(SinglyLinkedList<E> l1, SinglyLinkedList<E> l2){
-        SinglyLinkedList<E> newList = new SinglyLinkedList<E>();
-
-        Node<E> walk1 = l1.head;
-        Node<E> walk2 = l2.head;
-
-        while(walk1 != null){
-            newList.addLast(walk1.getElement());
-            walk1 = walk1.getNext();
-        }
-        while(walk2 != null){
-            newList.addLast(walk2.getElement());
-            walk2 = walk2.getNext();
-        }
-        return newList;
-  }
-
-  public SinglyLinkedList<E> secondToLast(SinglyLinkedList<E> list)
-  {
-      if(list.size < 2){
-          System.out.println("List is too short to find second to last element");
-          return null;
-      }
-      else {
-          Node<E> walk = list.head;
-          while (walk.getNext().getNext() != null) {
-              walk = walk.getNext();
-          }
-          SinglyLinkedList<E> newList = new SinglyLinkedList<E>();
-          newList.addLast(walk.getElement());
-          return newList;
-      }
-  }
-
-  public void swapNodes(SinglyLinkedList<E> list)
-  {
-      Node<E> A =  list.head;
-      Node<E> B = list.head.getNext();
-
-      if(A == B){
-          System.out.println("The nodes are already the same, no need to swap");
-          return;
-      }
-      else {
-          SinglyLinkedList<E> newList = new SinglyLinkedList<E>();
-
-          list.removeFirst();
-          list.removeFirst();
-          newList.head = B;
-          newList.head.next = A;
-
-          while (!list.isEmpty()) {
-              newList.addLast(list.first());
-              list.removeFirst();
-          }
-          System.out.println("Nodes" + A + " and " + B + " have been swapped");
-      }
-  }
-
   /**
    * Produces a string representation of the contents of the list.
    * This exists for debugging purposes only.
@@ -279,22 +219,4 @@ public class SinglyLinkedList<E> implements Cloneable {
     sb.append(")");
     return sb.toString();
   }
-  //main method
-  public static void main(String[] args)
-  {
-	  
-	  SinglyLinkedList<String> list = new SinglyLinkedList<String>();
-	  list.addFirst("MSP");
-	  list.addLast("ATL");
-	  list.addLast("BOS");
-	  //
-	  list.addFirst("LAX");
-	  System.out.println(list);
-	  //
-
-      //-----------Test Section-----------//
-      list.swapNodes(list);
-      System.out.println(list);
-  }
-  
 }

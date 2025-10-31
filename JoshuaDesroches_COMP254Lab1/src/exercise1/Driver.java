@@ -10,6 +10,7 @@ public class Driver {
         listA.addFirst("MSP");
         listA.addLast("ATL");
         listA.addLast("BOS");
+        listA.addLast("DFW");
         //
         listA.addFirst("LAX");
 
