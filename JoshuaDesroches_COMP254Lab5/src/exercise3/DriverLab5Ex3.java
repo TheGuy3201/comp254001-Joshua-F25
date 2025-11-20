@@ -4,7 +4,6 @@ import java.util.Comparator;
 
 public class DriverLab5Ex3 {
     public static void main(String[] args) {
-        // You can add test code here to test the Entry interface if needed.
         //create an unsorted priority queue
         HeapPriorityQueue<String,String> heapQueue = new HeapPriorityQueue<String,String>();
         heapQueue.insert("47", "A");

@@ -304,11 +304,11 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
     // computed height during the postorder visit.
     public static <E> int printHeight(Tree<E> T, Position<E> p) {
         int height = 0;
-        if (T.isInternal(p)) {
-            int maxChildHeight = 0;
-            for (Position<E> c : T.children(p)) {
-                int childHeight = printHeight(T, c);
-                if (childHeight > maxChildHeight) {
+        if (T.isInternal(p)) { // if tree has children
+            int maxChildHeight = 0; // initialize max height of children
+            for (Position<E> c : T.children(p)) { //loop through each child
+                int childHeight = printHeight(T, c); // recursive call to get height of child
+                if (childHeight > maxChildHeight) { // compare to max height
                     maxChildHeight = childHeight;
                 }
             }

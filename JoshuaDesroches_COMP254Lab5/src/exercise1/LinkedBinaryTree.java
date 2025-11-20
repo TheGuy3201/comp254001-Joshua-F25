@@ -298,25 +298,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
     return temp;
   }
 
-  //EXERCISE 1 METHOD
-  public Position<E> preorderNext(Position<E> p) {
-      // if there's a left child, that's the next in preorder
-      if (left(p) != null) return left(p);
-      // otherwise if there's a right child, that's next
-      if (right(p) != null) return right(p);
 
-      // climb up until we can take a right sibling
-      Position<E> walk = p;
-      while (walk != root()) {
-          Position<E> parent = parent(walk);
-          Position<E> parentRight = right(parent);
-          // if parent has a right child that is not the subtree we came from, return it
-          if (parentRight != null && parentRight != walk) return parentRight;
-          walk = parent;
-      }
-      // no next position (p was the last in preorder)
-      return null;
-  }
 
   /** Prints parenthesized representation of subtree of T rooted at p. */
   public static <E> void parenthesize(Tree<E> T, Position<E> p) {
@@ -336,5 +318,25 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 	    for (Position<E> p : T.preorder())
 	      System.out.println(p.getElement());
   }//
+
+    //EXERCISE 1 METHOD
+    public Position<E> preorderNext(Position<E> p) {
+        // if there's a left child, that's the next in preorder
+        if (left(p) != null) return left(p);
+        // otherwise if there's a right child, that's next
+        if (right(p) != null) return right(p);
+
+        // climb up until we can take a right sibling
+        Position<E> walk = p;
+        while (walk != root()) {
+            Position<E> parent = parent(walk);
+            Position<E> parentRight = right(parent);
+            // if parent has a right child that is not the subtree we came from, return it
+            if (parentRight != null && parentRight != walk) return parentRight;
+            walk = parent;
+        }
+        // no next position (p was the last in preorder)
+        return null;
+    }
 
 } //----------- end of LinkedBinaryTree class -----------
