@@ -136,7 +136,7 @@ public abstract class AbstractHashMap<K,V> extends AbstractMap<K,V> {
   //EXERCISE 1
   //Modified to make load factor configurable
   @Override
-  public V put(K key, V value, int loadFactor) { // new method with configurable load factor
+  public V put(K key, V value, int loadFactor) {
     V answer = bucketPut(hashValue(key), key, value); // use existing bucketPut method
 if (n > capacity / loadFactor)  // check against configurable load factor
       resize(loadFactor * capacity - 1);  // resize to maintain the specified load factor
